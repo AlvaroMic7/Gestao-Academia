@@ -1,0 +1,61 @@
+@model SistemaAcademia.Models.RegistroTreino
+
+@{
+    ViewData["Title"] = "Treino em Andamento";
+}
+
+<h1>Treino: @Model.Treino.Nome</h1>
+<h3>Data: @Model.DataTreino.ToString("dd/MM/yyyy")</h3>
+<p>@Model.Observacoes</p>
+
+<hr />
+
+<h4>Exercícios do Dia</h4>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Exercício</th>
+            <th width="100px">Séries</th>
+            <th width="100px">Repetições</th>
+            <th width="120px">Carga (Peso)</th>
+            <th>Ação</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.ItensRegistrados)
+        {
+            <tr>
+                <td>
+                    <strong>@item.Exercicio.Nome</strong>
+                </td>
+
+                <form asp-action="AtualizarItem" method="post">
+                    <input type="hidden" name="ItemId" value="@item.Id" />
+                    
+                    <td>
+                        <input type="text" name="Series" value="@item.SeriesRealizadas" class="form-control form-control-sm" />
+                    </td>
+                    <td>
+                        <input type="text" name="Repeticoes" value="@item.RepeticoesRealizadas" class="form-control form-control-sm" />
+                    </td>
+                    <td>
+                        <input type="text" name="Carga" value="@item.Carga" class="form-control form-control-sm" style="font-weight:bold; color:blue;" />
+                    </td>
+                    <td>
+                        <button type="submit" class="btn btn-sm btn-primary">Salvar</button>
+                    </td>
+                </form>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<br/>
+<div class="alert alert-success">
+    <strong>Dica:</strong> Digite a carga e clique em "Salvar" ao lado de cada exercício conforme for completando.
+</div>
+
+<div>
+    <a asp-action="Index">Voltar para o Histórico</a>
+</div>

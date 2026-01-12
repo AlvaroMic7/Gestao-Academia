@@ -1,0 +1,104 @@
+@model SistemaAcademia.Models.Treino
+
+@{
+    ViewData["Title"] = "Montar Treino";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <div>
+        <h1 class="display-6">@Model.Nome</h1>
+        <p class="text-muted">@Model.Observacoes</p>
+    </div>
+    <a asp-action="Index" class="btn btn-outline-secondary">Voltar</a>
+</div>
+
+<div class="card shadow-sm border-0 mb-4">
+    <div class="card-header bg-light">
+        <h5 class="mb-0 text-primary">➕ Adicionar Exercício</h5>
+    </div>
+    <div class="card-body">
+        <form asp-action="AdicionarItem" method="post">
+            <input type="hidden" name="TreinoId" value="@Model.Id" />
+            
+            <div class="row align-items-end">
+                <div class="col-md-4 mb-3">
+                    <label class="form-label fw-bold">Exercício</label>
+                    <select name="ExercicioId" class="form-select" asp-items="ViewBag.ExercicioId" required>
+                        <option value="">-- Selecione --</option>
+                    </select>
+                </div>
+
+                <div class="col-md-2 mb-3">
+                    <label class="form-label fw-bold">Séries</label>
+                    <input type="number" name="Series" class="form-control" placeholder="Ex: 3" min="1" required />
+                </div>
+
+                <div class="col-md-2 mb-3">
+                    <label class="form-label fw-bold">Reps</label>
+                    <input type="text" name="Repeticoes" class="form-control" placeholder="Ex: 10-12" required />
+                </div>
+                
+                <div class="col-md-2 mb-3">
+                    <label class="form-label fw-bold">Descanso</label>
+                    <input type="text" name="TempoDescanso" class="form-control" placeholder="Ex: 60s" />
+                </div>
+
+                <div class="col-md-2 mb-3 d-grid">
+                    <button type="submit" class="btn btn-primary fw-bold">Adicionar</button>
+                </div>
+                
+                <div class="col-md-12">
+                    <input type="text" name="Observacoes" class="form-control form-control-sm" placeholder="Observações opcionais (Ex: Drop-set na última, Isometria...)" />
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<h4 class="mb-3 text-secondary">Exercícios desta Ficha</h4>
+
+@if (!Model.ItensTreino.Any())
+{
+    <div class="alert alert-warning text-center">
+        Nenhum exercício adicionado ainda. Use o formulário acima!
+    </div>
+}
+else
+{
+    <div class="card shadow-sm border-0">
+        <table class="table table-hover mb-0 align-middle">
+            <thead class="table-light">
+                <tr>
+                    <th class="ps-4">Grupo</th> <th>Exercício</th>
+                    <th class="text-center">Séries</th>
+                    <th class="text-center">Reps</th>
+                    <th class="text-center">Descanso</th>
+                    <th>Obs</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.ItensTreino)
+                {
+                    <tr>
+                        <td class="ps-4">
+                            <span class="badge bg-secondary">@item.Exercicio.GrupoMuscular</span>
+                        </td>
+                        <td class="fw-bold">@item.Exercicio.Nome</td>
+                        <td class="text-center">
+                            <span class="badge bg-dark fs-6">@item.Series</span>
+                        </td>
+                        <td class="text-center">@item.Repeticoes</td>
+                        <td class="text-center text-muted">@item.TempoDescanso</td>
+                        <td class="small text-muted">@item.Observacoes</td>
+                        <td class="text-end pe-4">
+                            <a asp-action="RemoverItem" asp-route-id="@item.Id" class="btn btn-sm btn-outline-danger">
+                                🗑️
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}

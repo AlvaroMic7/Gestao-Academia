@@ -1,0 +1,55 @@
+@model SistemaAcademia.Models.Exercicio
+
+@{
+    ViewData["Title"] = "Criar";
+}
+
+<h1>Criar</h1>
+<h4>Novo Exercício</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            
+            <div class="form-group mb-3">
+                <label asp-for="Nome" class="control-label"></label>
+                <input asp-for="Nome" class="form-control" />
+                <span asp-validation-for="Nome" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group mb-3">
+                <label asp-for="GrupoMuscular" class="control-label">Grupo Muscular</label>
+                
+                <select asp-for="GrupoMuscular" class="form-select">
+                    <option value="">-- Selecione o Grupo --</option>
+                    <option value="Peito">Peito</option>
+                    <option value="Costas">Costas (Dorsal)</option>
+                    <option value="Pernas">Pernas (Quadríceps/Posterior)</option>
+                    <option value="Ombros">Ombros (Deltoides)</option>
+                    <option value="Bíceps">Bíceps</option>
+                    <option value="Tríceps">Tríceps</option>
+                    <option value="Panturrilha">Panturrilha (Gémeos)</option>
+                    <option value="Abdômen">Abdômen (Core)</option>
+                    <option value="Cardio">Cardio</option>
+                </select>
+                
+                <span asp-validation-for="GrupoMuscular" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group mb-3">
+                <label asp-for="Descricao" class="control-label"></label>
+                <input asp-for="Descricao" class="form-control" />
+                <span asp-validation-for="Descricao" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <input type="submit" value="Criar" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+<br/>
+<div>
+    <a asp-action="Index">Voltar para a Lista</a>
+</div>

@@ -1,0 +1,115 @@
+/* ===============================================
+   1. CONFIGURAÇÕES GERAIS DO LAYOUT
+   =============================================== */
+html {
+  font-size: 14px;
+  position: relative;
+  min-height: 100%;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+body {
+  /* Espaço para o rodapé não cobrir o conteúdo */
+  margin-bottom: 60px;
+  /* Cor de fundo cinza bem suave (mais moderno que branco puro) */
+  background-color: #f8f9fa;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  white-space: nowrap;
+  line-height: 60px;
+  background-color: #fff; /* Rodapé branco */
+  border-top: 1px solid #dee2e6;
+}
+
+/* ===============================================
+   2. CARTÕES (CARDS)
+   =============================================== */
+.card {
+    transition: all 0.3s ease-in-out; /* Animação suave */
+    border-radius: 15px; /* Bordas bem arredondadas */
+    overflow: hidden; /* Garante que o conteúdo respeite a borda redonda */
+}
+
+.card:hover {
+    transform: translateY(-5px); /* Sobe levemente */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important; /* Sombra mais forte */
+}
+
+.card-header {
+    background-color: white;
+    font-weight: bold;
+}
+
+/* ===============================================
+   3. BOTÕES
+   =============================================== */
+.btn {
+    border-radius: 8px; /* Botões mais arredondados */
+    font-weight: 500;
+    transition: all 0.2s;
+}
+
+/* Botão de Ação Principal (Verde) */
+.btn-success {
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.btn-success:hover {
+    transform: scale(1.02); /* Aumenta levemente ao passar o mouse */
+}
+
+/* ===============================================
+   4. TABELAS MODERNAS
+   =============================================== */
+.table {
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden; /* Para as bordas redondas funcionarem na tabela */
+}
+
+.table thead th {
+    background-color: #343a40; /* Cabeçalho escuro */
+    color: white;
+    border: none;
+    padding: 15px; /* Mais respiro */
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+}
+
+.table tbody td {
+    padding: 15px; /* Células mais espaçosas */
+    vertical-align: middle; /* Centraliza o texto verticalmente */
+    border-bottom: 1px solid #f1f1f1;
+}
+
+/* ===============================================
+   5. DETALHES EXTRAS (Badges e Links)
+   =============================================== */
+.badge {
+    padding: 8px 12px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+a {
+    text-decoration: none; /* Remove sublinhado padrão dos links */
+}
+
+a:hover {
+    text-decoration: none;
+}

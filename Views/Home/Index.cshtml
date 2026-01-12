@@ -1,0 +1,69 @@
+﻿@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<div class="text-center mb-5">
+    <h1 class="display-4 fw-bold">MyGym</h1>
+    <p class="lead">Foco, força e disciplina. Gerencie sua evolução aqui.</p>
+</div>
+
+<div class="row">
+    <div class="col-md-6 mb-4">
+        <div class="card h-100 shadow-sm border-0" style="background-color: #e8f5e9;"> <div class="card-body text-center p-5">
+                <div style="font-size: 4rem;">⚡</div>
+                <h2 class="card-title mt-3">Iniciar Treino Agora</h2>
+                <p class="card-text text-muted">Vai treinar hoje? Clique aqui para abrir o diário e registrar suas cargas.</p>
+                <a asp-controller="Registros" asp-action="Create" class="btn btn-success btn-lg px-5 mt-3 shadow">
+                    BORA TREINAR!
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6 mb-4">
+        <div class="card h-100 shadow-sm border-0">
+            <div class="card-body text-center p-5">
+                <div style="font-size: 4rem;">📋</div>
+                <h2 class="card-title mt-3">Minhas Fichas</h2>
+                <p class="card-text text-muted">Crie novos treinos (A, B, C), edite os exercícios e defina repetições.</p>
+                <a asp-controller="Treinos" asp-action="Index" class="btn btn-outline-primary mt-3">
+                    Gerenciar Fichas
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4 mb-4">
+        <div class="card h-100 shadow-sm">
+            <div class="card-body text-center">
+                <div style="font-size: 2.5rem;">📅</div>
+                <h5 class="card-title mt-2">Histórico Completo</h5>
+                <p class="small text-muted">Veja todos os treinos que você já realizou.</p>
+                <a asp-controller="Registros" asp-action="Index" class="btn btn-sm btn-secondary">Ver Histórico</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4 mb-4">
+        <div class="card h-100 shadow-sm">
+            <div class="card-body text-center">
+                <div style="font-size: 2.5rem;">🏋️‍♂️</div>
+                <h5 class="card-title mt-2">Catálogo</h5>
+                <p class="small text-muted">Adicione novos exercícios disponíveis na academia.</p>
+                <a asp-controller="Exercicios" asp-action="Index" class="btn btn-sm btn-secondary">Gerenciar Exercícios</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4 mb-4">
+        <div class="card h-100 shadow-sm" style="background-color: #f8f9fa; border-style: dashed;">
+            <div class="card-body text-center text-muted">
+                <div style="font-size: 2.5rem;">📈</div>
+                <h5 class="card-title mt-2">Evolução</h5>
+                <p class="small">Em breve você verá gráficos aqui!</p>
+            </div>
+        </div>
+    </div>
+</div>

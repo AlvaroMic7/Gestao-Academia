@@ -1,0 +1,56 @@
+@model IEnumerable<SistemaAcademia.Models.RegistroTreino>
+
+@{
+    ViewData["Title"] = "Histórico";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1 class="display-6">📅 Histórico de Treinos</h1>
+    <a asp-action="Create" class="btn btn-success btn-lg shadow">
+        ⚡ INICIAR TREINO DE HOJE
+    </a>
+</div>
+
+<div class="card shadow-sm border-0">
+    <div class="card-body p-0">
+        <table class="table table-hover mb-0">
+            <thead class="table-light">
+                <tr>
+                    <th class="ps-4">Data</th>
+                    <th>Treino Realizado</th>
+                    <th>Observações</th>
+                    <th class="text-end pe-4">Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model) {
+                    <tr>
+                        <td class="ps-4 fw-bold text-secondary">
+                            @item.DataTreino.ToString("dd/MM/yyyy")
+                        </td>
+                        <td>
+                            <span class="badge bg-primary rounded-pill">@item.Treino.Nome</span>
+                        </td>
+                        <td class="text-muted small">
+                            @Html.DisplayFor(modelItem => item.Observacoes)
+                        </td>
+                        <td class="text-end pe-4">
+                            <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-outline-info me-1" title="Ver Pesos">
+                                📝 Ver Pesos
+                            </a>
+                            <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-outline-danger" title="Excluir">
+                                🗑️
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        @if (!Model.Any())
+        {
+            <div class="p-5 text-center text-muted">
+                <p>Nenhum treino registrado ainda. Bora treinar?</p>
+            </div>
+        }
+    </div>
+</div>

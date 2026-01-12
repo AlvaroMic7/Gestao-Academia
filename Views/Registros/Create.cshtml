@@ -1,0 +1,40 @@
+@model SistemaAcademia.Models.RegistroTreino
+
+@{
+    ViewData["Title"] = "Iniciar Treino";
+}
+
+<h1>Iniciar Novo Treino</h1>
+<h4>Escolha qual ficha você vai fazer hoje</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            
+            <div class="form-group mb-3">
+                <label class="control-label">Qual treino você vai fazer?</label>
+                <select asp-for="TreinoId" class ="form-control" asp-items="ViewBag.TreinoId"></select>
+            </div>
+            
+            <div class="form-group mb-3">
+                <label asp-for="DataTreino" class="control-label">Data</label>
+                <input asp-for="DataTreino" class="form-control" type="date" value="@DateTime.Now.ToString("yyyy-MM-dd")" />
+                <span asp-validation-for="DataTreino" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group mb-3">
+                <label asp-for="Observacoes" class="control-label">Observações (Opcional)</label>
+                <input asp-for="Observacoes" class="form-control" placeholder="Ex: Hoje estou cansado..." />
+            </div>
+            
+            <div class="form-group">
+                <input type="submit" value="Iniciar Treino!" class="btn btn-success btn-lg" />
+            </div>
+        </form>
+    </div>
+</div>
+<br/>
+<div>
+    <a asp-action="Index">Voltar para o Histórico</a>
+</div>

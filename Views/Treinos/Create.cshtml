@@ -1,0 +1,36 @@
+@model SistemaAcademia.Models.Treino
+
+@{
+    ViewData["Title"] = "Criar Nova Ficha";
+}
+
+<h1>Criar Nova Ficha</h1>
+<h4>Dê um nome para sua ficha de treino</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            
+            <div class="form-group mb-3">
+                <label asp-for="Nome" class="control-label">Nome da Ficha (Ex: Treino A)</label>
+                <input asp-for="Nome" class="form-control" />
+                <span asp-validation-for="Nome" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group mb-3">
+                <label asp-for="Observacoes" class="control-label">Observações (Opcional)</label>
+                <input asp-for="Observacoes" class="form-control" placeholder="Ex: Fazer 2x por semana" />
+                <span asp-validation-for="Observacoes" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <input type="submit" value="Salvar e Montar Treino" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+<br/>
+<div>
+    <a asp-action="Index">Voltar para a Lista</a>
+</div>
